@@ -7,10 +7,13 @@
 	"name": "cf-ai-cv-rater",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-11-25",
+	"ai": {
+		"binding": "AI"
+	},
 	"migrations": [
 		{
 			"new_sqlite_classes": [
-				"MyDurableObject"
+				"Memory"
 			],
 			"tag": "v1"
 		}
@@ -18,8 +21,8 @@
 	"durable_objects": {
 		"bindings": [
 			{
-				"class_name": "MyDurableObject",
-				"name": "MY_DURABLE_OBJECT"
+				"class_name": "Memory",
+				"name": "Memory"
 			}
 		]
 	},
@@ -50,7 +53,7 @@
 	 * Static Assets
 	 * https://developers.cloudflare.com/workers/static-assets/binding/
 	 */
-	// "assets": { "directory": "./public/", "binding": "ASSETS" }
+	 "assets": { "directory": "./public/", "binding": "ASSETS" }
 	/**
 	 * Service Bindings (communicate between multiple Workers)
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
