@@ -24,4 +24,42 @@ export default function Home() {
 		setSessionId(id);
 	}, []);
 
+	async function sendMessage() {
+		if (!input.trim()) return; // dont send empty messages
+
+		const userMsg: Message = { role: 'user', content: input };
+
+		setMessages(prev => [...prev, userMsg]);
+
+		const text = input;
+		setInput('');
+		setLoading(true);
+
+		try {
+			const response = await fetch('/api/chat', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					message: text,
+					sessionId: sessionId,
+				}),
+			});
+
+			const data = await response.json();
+
+
+			const botMsg: Message = { role: 'bot', content: data.response };
+
+			setMessages(prev => [...prev, botMsg]);
+
+		} catch (e) {
+			alert('Something went wrong, please try again later.');
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	return (
+
+	)
 }
