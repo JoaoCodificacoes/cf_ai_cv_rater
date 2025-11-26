@@ -7,7 +7,7 @@ interface ChatInputProps {
 
 export default function ChatInput({ input, setInput, sendMessage, loading }: ChatInputProps) {
 	return (
-		<div className="p-4 w-full">
+		<div className="w-full">
 			<div className="flex items-center gap-2 p-2 bg-zinc-900 rounded-full border border-zinc-800 max-w-3xl mx-auto">
 				<input
 					type="text"
