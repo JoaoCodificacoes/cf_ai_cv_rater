@@ -92,6 +92,18 @@ export default function Home() {
 					<ChatBubble key={i} role={msg.role} content={msg.content} />
 				))}
 
+				{loading && (
+					<div className="flex justify-start">
+						<div className="px-4 py-2 rounded-2xl bg-orange-800 text-zinc-200 border border-orange-700 rounded-bl-none">
+							<div className="flex gap-1">
+								<span className="animate-bounce">•</span>
+								<span className="animate-bounce" style={{ animationDelay: '0.1s' }}>•</span>
+								<span className="animate-bounce" style={{ animationDelay: '0.2s' }}>•</span>
+							</div>
+						</div>
+					</div>
+				)}
+
 				<div ref={bottomRef} />
 			</div>
 			<div className="w-full max-w-3xl mx-auto p-4 sticky bottom-0 bg-gradient-to-t from-black via-black to-transparent pt-8">
