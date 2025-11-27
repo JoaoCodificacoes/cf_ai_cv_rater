@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "cf-ai-cv-rater",
-	"main": "src/index.ts",
+	"main": "api/src/index.ts",
 	"compatibility_date": "2025-11-25",
 	"ai": {
 		"binding": "AI"
