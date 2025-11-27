@@ -17,7 +17,7 @@ export default {
 		}
 
 
-		if (url.pathname === "/api/rate" && request.method === "POST") {
+		if (url.pathname === "/api/chat" && request.method === "POST") {
 			const { sessionId } = await request.clone().json() as any;
 
 
@@ -40,9 +40,9 @@ export class Memory extends DurableObject<Env> {
 	}
 
 	async fetch(request: Request): Promise<Response> {
+		const body = await request.json();
 
-		const { cvText } = await request.json() as any;
-
+		const userContent = body.message
 
 		const systemPrompt = `
       You are a Senior Staff Recruiter
@@ -74,7 +74,7 @@ export class Memory extends DurableObject<Env> {
 			const response = await this.env.AI.run("@cf/meta/llama-3-8b-instruct", {
 				messages: [
 					{ role: "system", content: systemPrompt },
-					{ role: "user", content: cvText }
+					{ role: "user", content: userContent }
 				],
 				max_tokens: 1024,
 				temperature: 0.7
