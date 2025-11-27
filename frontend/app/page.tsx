@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import ChatInput from '@/components/ChatInput';
 import ChatBubble from '@/components/ChatBubble';
+import { error } from 'next/dist/build/output/log';
 
 interface Message {
 	role: 'user' | 'bot';
@@ -78,13 +79,12 @@ export default function Home() {
 
 	return (
 		<main className="flex flex-col h-screen bg-black text-white">
-
-			<div className="flex-1 overflow-y-auto flex flex-col gap-y-4 w-full max-w-3xl mx-auto scrollbar-hide p-4 ">
+			<div className="flex-1 overflow-y-auto flex flex-col gap-y-4 min-h-0 w-full max-w-3xl mx-auto p-8 scrollbar-hide">
 
 				{messages.length === 0 && (
 					<div className="flex flex-col items-center justify-center flex-1 text-zinc-500">
-						<p className="text-xl font-bold">I'm ready to roast you</p>
-						<p className="text-lg">Paste your CV</p>
+						<p className="text-2xl font-bold mb-2">Ready to Roast Your CV</p>
+						<p className="text-lg text-zinc-400">Paste your CV and get honest feedback</p>
 					</div>
 				)}
 
@@ -93,19 +93,15 @@ export default function Home() {
 				))}
 
 				<div ref={bottomRef} />
-
 			</div>
-
-			<div className="w-full max-w-3xl mx-auto p-4 sticky bottom-0 bg-black">
-
-			<ChatInput
+			<div className="w-full max-w-3xl mx-auto p-4 sticky bottom-0 bg-gradient-to-t from-black via-black to-transparent pt-8">
+				<ChatInput
 					input={input}
 					setInput={setInput}
 					sendMessage={sendMessage}
 					loading={loading}
 				/>
 			</div>
-
 		</main>
 	);
 }

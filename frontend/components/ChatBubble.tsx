@@ -8,8 +8,8 @@ export default function ChatBubble({ role, content }: ChatBubbleProps) {
 	const isUser = role === 'user';
 
 	return (
-		<div className={`flex items-center gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
-			<p
+		<div className={`flex items-start gap-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
+			<div
 				className={`px-4 py-2 rounded-2xl max-w-xs whitespace-pre-wrap ${
 					isUser
 						? 'bg-blue-600 text-white rounded-br-none'
@@ -17,7 +17,7 @@ export default function ChatBubble({ role, content }: ChatBubbleProps) {
 				}`}
 			>
 				{content}
-			</p>
+			</div>
 		</div>
 	);
 }
